@@ -1,0 +1,37 @@
+﻿<Window x:Class="MVVM.CarsCatalog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM.CarsCatalog"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" DataContext="{Binding SelectedCar}" Grid.ColumnSpan="2">
+            <TextBlock Text="Выбранный элемент" Margin="0,0,-233,0"  />
+            <TextBlock Text="Модель" />
+            <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Максимальная скрорость, км/ч" />
+            <TextBox Text="{Binding MaxSpeed, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Цена, руб." />
+            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+            <Button  Click="Add_Click">+</Button>
+            <Button Click="Delete_Click" >-</Button>
+        </StackPanel>
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Cars}"
+                 SelectedItem="{Binding SelectedCar}" Grid.ColumnSpan="2" Margin="0,170,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Model}" />
+                        <TextBlock Text="{Binding Path=MaxSpeed}" />
+                        <TextBlock Text="{Binding Path=Price}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
