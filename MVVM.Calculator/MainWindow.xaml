@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM.CarsCatalog"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="592*" />
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" DataContext="{Binding SelectedCar}" Grid.ColumnSpan="2">
+        <StackPanel Grid.Column="0" DataContext="{Binding SelectedCar}" Grid.ColumnSpan="3" Margin="0,0,-0.4,0">
             <TextBlock Text="Выбранный элемент" Margin="0,0,-233,0"  />
             <TextBlock Text="Модель" />
             <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
@@ -22,7 +24,7 @@
             <Button Click="Delete_Click" >-</Button>
         </StackPanel>
         <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Cars}"
-                 SelectedItem="{Binding SelectedCar}" Grid.ColumnSpan="2" Margin="0,170,0,0">
+                 SelectedItem="{Binding SelectedCar}" Grid.ColumnSpan="3" Margin="0,170,-0.4,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">

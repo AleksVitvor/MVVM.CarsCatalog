@@ -23,6 +23,11 @@ namespace MVVM.CarsCatalog
         {
             ((CarViewModel)DataContext).DeleteCar();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Singleton.Close();
+        }
     }
 
 }

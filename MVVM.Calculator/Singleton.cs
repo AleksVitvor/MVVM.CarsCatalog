@@ -17,5 +17,10 @@ namespace MVVM.CarsCatalog
                 instance = new Singleton();
             return instance;
         }
+        public static void Close()
+        {
+            if(SqlConnection.State==System.Data.ConnectionState.Open)
+                SqlConnection.Close();
+        }
     }
 }
