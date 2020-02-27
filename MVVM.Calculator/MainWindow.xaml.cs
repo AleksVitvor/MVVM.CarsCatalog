@@ -13,17 +13,6 @@ namespace MVVM.CarsCatalog
             Singleton.getInstance();
             DataContext = new CarViewModel();
         }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            ((CarViewModel)DataContext).AddCar();
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            ((CarViewModel)DataContext).DeleteCar();
-        }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Singleton.Close();

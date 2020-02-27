@@ -7,21 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="592*" />
-            <ColumnDefinition Width="195*"/>
-            <ColumnDefinition Width="6*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" DataContext="{Binding SelectedCar}" Grid.ColumnSpan="3" Margin="0,0,-0.4,0">
-            <TextBlock Text="Выбранный элемент" Margin="0,0,-233,0"  />
+        <StackPanel DataContext="{Binding SelectedCar}">
+            <TextBlock Text="Выбранный элемент" Margin="0,0,0,0"  />
             <TextBlock Text="Модель" />
             <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Максимальная скрорость, км/ч" />
             <TextBox Text="{Binding MaxSpeed, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Цена, руб." />
             <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
-            <Button  Click="Add_Click">+</Button>
-            <Button Click="Delete_Click" >-</Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Margin="0,120,0,0">
+            <Button Command="{Binding AddCommand}" Width="800">+</Button>
+            <Button Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedCar}" Width="800">-</Button>
         </StackPanel>
         <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Cars}"
                  SelectedItem="{Binding SelectedCar}" Grid.ColumnSpan="3" Margin="0,170,-0.4,0">
